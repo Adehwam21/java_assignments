@@ -1,12 +1,9 @@
 public class Book {
     // book properties
-    private String title, author, ISBN;
-    private int pageCount;
-    private double price;
-
+    private String title, author, ISBN, publicationDate;
+    private int numberOfPages;
     // no args constructor
     public Book(){}
-
     // set methods
     public void setTitle(String title) {
         this.title = title;
@@ -17,13 +14,12 @@ public class Book {
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
-    public void setPageCount(int pageCount) {
-        this.pageCount = pageCount;
+    public void setNumberOfPages(int numberOfPages) {
+        this.numberOfPages = numberOfPages;
     }
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPublicationDate(String publicationDate) {
+        this.publicationDate = publicationDate;
     }
-
     // get methods
     public String getTitle() {
         return title;
@@ -34,71 +30,71 @@ public class Book {
     public String getISBN() {
         return ISBN;
     }
-    public int getPageCount() {
-        return pageCount;
+    public int getNumberOfPages() {
+        return numberOfPages;
     }
-    public double getPrice() {
-        return price;
+    public String getPublicationDate() {
+        return publicationDate;
     }
 
-
+    // methods for checking publication status and book type
+    public String checkPublication() {
+        int currentYear = 2003;
+        String a = "Recent Publication";
+        String b = "Old Publication";
+        if (Integer.parseInt(publicationDate) > (currentYear - 5)) {
+            return a;
+        } else {
+            return b;
+        }
+    }
+    public String typeOfBook() {
+        String a = "Long";
+        String b = "Short";
+        if (numberOfPages > 500) {
+            return a;
+        } else {
+            return b;
+        }
+    }
     public static class Main {
-        // creating book objects
         public static void main(String[] books) {
-
+            //creating book objects
             Book book1 = new Book();
             Book book2 = new Book();
-            Book book3 = new Book();
 
-            // setting book3 properties
+
+            // setting book1 properties
             book1.setTitle("No Sweetness Here");
             book1.setAuthor("Ama Atta Aidoo");
             book1.setISBN("9781558616202");
-            book1.setPageCount(166);
-            book1.setPrice(3.99);
+            book1.setNumberOfPages(530);
+            book1.setPublicationDate("2000");
 
-
-            // setting book3 properties
-            book2.setTitle("Swimsuit");
-            book2.setAuthor("James Patterson");
-            book2.setISBN("0446561355");
-            book2.setPageCount(400);
-            book2.setPrice(11.99);
-
-            // setting book3 properties
-            book3.setTitle("The Final Quest");
-            book3.setAuthor("Rick Joyner");
-            book3.setISBN("192937190X");
-            book3.setPageCount(170);
-            book3.setPrice(7.99);
+            // setting book2 properties
+            book2.setTitle("The Pragmatic Programmer");
+            book2.setAuthor("Daniel Green");
+            book2.setISBN("9781558616202");
+            book2.setNumberOfPages(320);
+            book2.setPublicationDate("2021");
 
             //Display book1 details
-            System.out.println("Book 1");
-            System.out.println("Title: "+book1.getTitle());
-            System.out.println("Author: "+book1.getAuthor());
-            System.out.println("ISBN: "+book1.getISBN());
-            System.out.println("Pages: "+book1.getPageCount());
-            System.out.println("Price: $"+book1.getPrice()+"\n");
+            System.out.println("Book 2" + "Title: " + book1.getTitle() + "\n" +
+                    "Author: " + book1.getAuthor() +"\n" +
+                    "ISBN: " + book1.getISBN() +"\n" +
+                    "Pages: " + book1.getNumberOfPages() +", Type: "+book1.typeOfBook()+"\n" +
+                    "Publication Date: " + book1.getPublicationDate() + ", Status: " + book1.checkPublication()+"\n"
+            );
 
-            //Display book2 details
-            System.out.println("Book 2");
-            System.out.println("Title: "+book2.getTitle());
-            System.out.println("Author: "+book2.getAuthor());
-            System.out.println("ISBN: "+book2.getISBN());
-            System.out.println("Pages: "+book2.getPageCount());
-            System.out.println("Price: $"+book2.getPrice()+"\n");
-
-            // Display book3 details
-            System.out.println("Book 3");
-            System.out.println("Title: "+book3.getTitle());
-            System.out.println("Author: "+book3.getAuthor());
-            System.out.println("ISBN: "+book3.getISBN());
-            System.out.println("Pages: "+book3.getPageCount());
-            System.out.println("Price: $"+book3.getPrice()+"\n");
+            // Display book2 details
+            System.out.println("Book 2" + "Title: " + book2.getTitle() + "\n" +
+                    "Author: " + book2.getAuthor() +"\n" +
+                    "ISBN: " + book2.getISBN() +"\n" +
+                    "Pages: " + book2.getNumberOfPages() +", Type: "+book2.typeOfBook()+"\n" +
+                    "Publication Date: " + book2.getPublicationDate() + ", Status: " + book2.checkPublication()+"\n"
+            );
         }
     }
 }
 
-// code is shorter when args constructor is used for the class
-
-
+// code is shorter when args constructor is used for setting the class properties
